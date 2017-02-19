@@ -1,0 +1,14 @@
+{
+  "name": "i18n",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Translate.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "rob@hixfamily.org",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^3.15.0"
+  }
+}
