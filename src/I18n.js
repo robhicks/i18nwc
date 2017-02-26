@@ -1,9 +1,33 @@
-class Translate {
-  constuctor(message = {}, options = {}) {
+export default class I18n {
+  constructor(message = {}, options = {}) {
     this.options = options;
     this.message = message;
     this.splitter = options.splitter || '::';
-    return this.translate;
+    return (...key) => {
+      let replacements, count;
+      if (key[1] && typeof key[1] === 'object') replacements = key[1];
+      else if (key[2] && typeof key[2] === 'object') replacements = key[2];
+      if (Number.isInteger(key[1])) count = key[1];
+      else if(Number.isInteger(key[2])) count = key[2];
+
+      let translation = this.getTranslation(key);
+
+      if (count !== null && replacements) {
+        replacements.n = replacements.n ? replacements.n : count;
+
+        //get appropriate plural translation string
+        translation = this.getPlural(translation, count);
+      }
+
+      //replace {placeholders}
+      translation = this.replacePlaceholders(translation, replacements);
+
+      if (translation === null) {
+        console.log('Translation for "' + key + '" not found.');
+      }
+
+      return translation;
+    };
   }
 
   getTranslation(key) {
@@ -47,29 +71,4 @@ class Translate {
     return translation;
   }
 
-  translate(...key) {
-    let replacements, count;
-    if (key[1] && typeof key[1] === 'object') replacements = key[1];
-    else if (key[2] && typeof key[2] === 'object') replacements = key[2];
-    if (Number.isInteger(key[1])) count = key[1];
-    else if(Number.isInteger(key[2])) count = key[2];
-
-    let translation = this.getTranslation(key);
-
-    if (count !== null) {
-      replacements.n = replacements.n ? replacements.n : count;
-
-      //get appropriate plural translation string
-      translation = this.getPlural(translation, count);
-    }
-
-    //replace {placeholders}
-    translation = this.replacePlaceholders(translation, replacements);
-
-    if (translation === null) {
-      console.log('Translation for "' + key + '" not found.');
-    }
-
-    return translation;
-  }
 }
