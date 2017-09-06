@@ -1,5 +1,5 @@
 const buble = require('rollup-plugin-buble');
-let input = 'src/I18n.js';
+let input = 'src/I18nwc.js';
 let plugins = [
   buble()
 ];
@@ -10,9 +10,9 @@ export default [
     input,
     plugins,
     globals,
-    name: 'I18n',
+    name: 'I18nwc',
     output: {
-      file: 'dist/I18n.iife.js',
+      file: 'dist/I18nwc.iife.js',
       format: 'iife'
     }
   },
@@ -21,7 +21,7 @@ export default [
     plugins,
     globals,
     output: {
-      file: 'dist/I18n.cjs.js',
+      file: 'dist/I18nwc.cjs.js',
       format: 'cjs'
     }
   },
@@ -30,7 +30,7 @@ export default [
     plugins,
     globals,
     output: {
-      file: 'dist/I18n.es.js',
+      file: 'dist/I18nwc.es.js',
       format: 'es'
     }
   }

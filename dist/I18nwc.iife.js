@@ -1,4 +1,4 @@
-var I18n = (function () {
+var I18nwc = (function () {
 'use strict';
 
 var I18n = function I18n(message, options) {
@@ -40,14 +40,17 @@ var I18n = function I18n(message, options) {
 };
 
 I18n.prototype.getTranslation = function getTranslation (key) {
+  if (!key) { return null; }
   if (this.message[key]) { return this.message[key]; }
+  try {
+    var components = key.split(this.splitter);
+    var namespace = components[0];
+    var _key = components[1];
 
-  var components = key.split(this.splitter);
-  var namespace = components[0];
-  var _key = components[1];
-
-  if (this.message[namespace] && this.message[namespace][_key]) { return this.message[namespace][_key]; }
-  return null;
+    if (this.message[namespace] && this.message[namespace][_key]) { return this.message[namespace][_key]; }
+  } catch(e) {
+    return null;
+  }
 };
 
 I18n.prototype.getPlural = function getPlural (translation, count) {

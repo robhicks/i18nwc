@@ -1,9 +1,9 @@
 {
-  "name": "i18n",
+  "name": "i18nwc",
   "version": "1.0.0",
-  "description": "",
-  "main": "dist/I18n.cjs.js",
-  "module": "dist/I18n.es.js",
+  "description": "A lightweight translation module for v1 Native Web components using incremental-dom",
+  "main": "dist/I18nwc.cjs.js",
+  "module": "dist/I18nwc.es.js",
   "scripts": {
     "dev": "rollup -c -w",
     "test": "echo \"Error: no test specified\" && exit 1"
