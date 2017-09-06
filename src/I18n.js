@@ -31,14 +31,17 @@ export default class I18n {
   }
 
   getTranslation(key) {
+    if (!key) return null;
     if (this.message[key]) return this.message[key];
+    try {
+      let components = key.split(this.splitter);
+      let namespace = components[0];
+      let _key = components[1];
 
-    let components = key.split(this.splitter);
-    let namespace = components[0];
-    let _key = components[1];
-
-    if (this.message[namespace] && this.message[namespace][_key]) return this.message[namespace][_key];
-    return null;
+      if (this.message[namespace] && this.message[namespace][_key]) return this.message[namespace][_key];
+    } catch(e) {
+      return null;
+    }
   }
 
   getPlural(translation, count) {
