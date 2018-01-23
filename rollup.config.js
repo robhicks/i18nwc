@@ -21,7 +21,7 @@ export default [
     plugins,
     globals,
     output: {
-      file: 'dist/I18nwc.cjs.js',
+      file: 'index.js',
       format: 'cjs'
     }
   },

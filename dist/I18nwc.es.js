@@ -29,7 +29,7 @@ var I18n = function I18n(message, options) {
     translation = this$1.replacePlaceholders(translation, replacements);
 
     if (translation === null) {
-      console.log('Translation for "' + key + '" not found.');
+      console.warn('Translation for "' + key + '" not found.');
     }
 
     return translation;

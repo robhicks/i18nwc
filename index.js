@@ -1,4 +1,3 @@
-var I18nwc = (function () {
 'use strict';
 
 var I18n = function I18n(message, options) {
@@ -83,6 +82,4 @@ I18n.prototype.replacePlaceholders = function replacePlaceholders (translation, 
   return translation;
 };
 
-return I18n;
-
-}());
+module.exports = I18n;

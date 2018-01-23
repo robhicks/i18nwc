@@ -23,7 +23,7 @@ export default class I18n {
       translation = this.replacePlaceholders(translation, replacements);
 
       if (translation === null) {
-        console.log('Translation for "' + key + '" not found.');
+        console.warn('Translation for "' + key + '" not found.');
       }
 
       return translation;
