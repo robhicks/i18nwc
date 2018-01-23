@@ -10,7 +10,7 @@ export default class I18n {
       if (Number.isInteger(key[1])) count = key[1];
       else if(Number.isInteger(key[2])) count = key[2];
 
-      let translation = this.getTranslation(key);
+      let translation = this.getTranslation(key[0]);
 
       if (count !== null && replacements) {
         replacements.n = replacements.n ? replacements.n : count;
@@ -32,13 +32,13 @@ export default class I18n {
 
   getTranslation(key) {
     if (!key) return null;
-    if (this.message[key]) return this.message[key];
+    if (this.message.hasOwnProperty(key)) return this.message[key];
     try {
       let components = key.split(this.splitter);
       let namespace = components[0];
       let _key = components[1];
-
-      if (this.message[namespace] && this.message[namespace][_key]) return this.message[namespace][_key];
+      if (this.message.hasOwnProperty(namespace) && this.message[namespace][_key]) return this.message[namespace][_key];
+      return null;
     } catch(e) {
       return null;
     }

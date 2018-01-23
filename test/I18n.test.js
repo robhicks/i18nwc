@@ -16,4 +16,12 @@ describe('I18n', () => {
     expect(t('firstName')).to.be.equal(null);
     expect(t('sex')).to.be.equal('Male');
   });
+  it('should return a translation with a splitter', () => {
+    let t = new I18n({foo: {name: 'bar'}});
+    expect(t('foo::name')).to.be.equal('bar');
+  });
+  it('should return a translation with a custom splitter', () => {
+    let t = new I18n({foo: {name: 'bar'}}, {splitter: '.'});
+    expect(t('foo.name')).to.be.equal('bar');
+  });
 });

@@ -18,7 +18,7 @@ var I18n = function I18n(message, options) {
     if (Number.isInteger(key[1])) { count = key[1]; }
     else if(Number.isInteger(key[2])) { count = key[2]; }
 
-    var translation = this$1.getTranslation(key);
+    var translation = this$1.getTranslation(key[0]);
 
     if (count !== null && replacements) {
       replacements.n = replacements.n ? replacements.n : count;
@@ -40,13 +40,13 @@ var I18n = function I18n(message, options) {
 
 I18n.prototype.getTranslation = function getTranslation (key) {
   if (!key) { return null; }
-  if (this.message[key]) { return this.message[key]; }
+  if (this.message.hasOwnProperty(key)) { return this.message[key]; }
   try {
     var components = key.split(this.splitter);
     var namespace = components[0];
     var _key = components[1];
-
-    if (this.message[namespace] && this.message[namespace][_key]) { return this.message[namespace][_key]; }
+    if (this.message.hasOwnProperty(namespace) && this.message[namespace][_key]) { return this.message[namespace][_key]; }
+    return null;
   } catch(e) {
     return null;
   }
