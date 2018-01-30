@@ -1,6 +1,6 @@
 {
   "name": "i18nwc",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A lightweight translation module for v1 Native Web components using incremental-dom",
   "main": "index.js",
   "module": "dist/I18nwc.es.js",
