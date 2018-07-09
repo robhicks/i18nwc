@@ -1,7 +1,5 @@
-const buble = require('rollup-plugin-buble');
 let input = 'src/I18nwc.js';
 let plugins = [
-  buble()
 ];
 let globals = [];
 

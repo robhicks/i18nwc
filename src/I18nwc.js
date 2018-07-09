@@ -3,16 +3,19 @@ export default class I18n {
     this.options = options;
     this.message = message;
     this.splitter = options.splitter || '::';
+
     return (...key) => {
       let replacements, count;
+
       if (key[1] && typeof key[1] === 'object') replacements = key[1];
       else if (key[2] && typeof key[2] === 'object') replacements = key[2];
+
       if (Number.isInteger(key[1])) count = key[1];
       else if(Number.isInteger(key[2])) count = key[2];
 
       let translation = this.getTranslation(key[0]);
 
-      if (count !== null && replacements) {
+      if (count && replacements) {
         replacements.n = replacements.n ? replacements.n : count;
 
         //get appropriate plural translation string
@@ -20,9 +23,9 @@ export default class I18n {
       }
 
       //replace {placeholders}
-      translation = this.replacePlaceholders(translation, replacements);
+      if (replacements) translation = this.replacePlaceholders(translation, replacements);
 
-      if (translation === null) {
+      if (!translation === null) {
         console.warn('Translation for "' + key + '" not found.');
       }
 
@@ -63,15 +66,11 @@ export default class I18n {
   }
 
   replacePlaceholders(translation, replacements) {
-    if (typeof translation === 'string') {
-      return translation.replace(/\{(\w*)\}/g, ((match, key) => {
-        if (!replacements.hasOwnProperty(key)) {
-          console.log('Could not find replacement for ', key, 'in replacements object:', replacements);
-          return '{' + key + '}';
-        }
-      }));
-    }
-    return translation;
+    let t = typeof translation === 'string'
+      ? translation.replace(/\{(\w*)\}/g, (match, key) => replacements[key])
+      : translation;
+
+    return t;
   }
 
 }

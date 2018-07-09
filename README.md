@@ -1,5 +1,4 @@
-i18n
-====
+# i18n
 
 This is a simple es2015 utility for i18n translations. It supports placeholders and various plurals. It works particularly well with v1 native web components and incremental-dom.
 
@@ -24,7 +23,6 @@ Use npm to install it. The main file is dist/I18n.es.js, which is referenced in 
   }
 ]
 ```
-
 
 ```JavaScript
 import I18n from 'i18n';
@@ -91,3 +89,7 @@ export { MyComponent };
   </div>
 </div>
 ```
+
+# Notes
+
+As of v.2, assets are not transpiled

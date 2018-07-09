@@ -24,4 +24,15 @@ describe('I18n', () => {
     let t = new I18n({foo: {name: 'bar'}}, {splitter: '.'});
     expect(t('foo.name')).to.be.equal('bar');
   });
+
+  it(`should replace placeholders`, () => {
+    let translations = {
+      results: "Show {viewCount} of {totalCount} Results"
+    }
+    let t = new I18n(translations);
+    expect(t('results')).to.be.equal("Show {viewCount} of {totalCount} Results");
+    expect(t('results', {viewCount: 20, totalCount: 100})).to.be.equal("Show 20 of 100 Results");
+  });
+
+
 });
