@@ -1,9 +1,10 @@
 {
   "name": "i18nwc",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A lightweight translation module for v1 Native Web components",
+  "browser": "dist/I18nwc.es.js",
   "main": "index.js",
-  "module": "dist/I18nwc.es.js",
+  "module": "src/I18nwc.js",
   "scripts": {
     "build": "rollup -c -w",
     "dev": "run-s build mocha",
