@@ -8,10 +8,10 @@ export default [
     input,
     plugins,
     globals,
-    name: 'I18nwc',
     output: {
       file: 'dist/I18nwc.iife.js',
-      format: 'iife'
+      format: 'iife',
+      name: 'I18nwc'
     }
   },
   {
