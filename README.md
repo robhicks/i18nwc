@@ -1,10 +1,10 @@
 # i18n
 
-This is a simple es2015 utility for i18n translations. It supports placeholders and various plurals. It works particularly well with v1 native web components and incremental-dom.
+This is a simple es2015 utility for i18n translations. It supports placeholders and various plurals. 
 
 # Installation
 
-Use npm to install it. The main file is dist/I18n.es.js, which is referenced in package.json under module (for es6 modules). You may also try dist/I18n.cjs.js which is common js format, although it has not been used/tested/
+Use npm, pnpm or yarn to install it. The main file is dist/I18n.es.js, which is referenced in package.json under module (for es6 modules). You may also try dist/I18n.cjs.js which is common js format, although it has not been used/tested/
 
 # Use
 
@@ -93,3 +93,4 @@ export { MyComponent };
 # Notes
 
 As of v.2, assets are not transpiled
+As of v.3, if a translation is not found for a key, they key is returned.
