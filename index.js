@@ -43,9 +43,9 @@ class I18n {
       let namespace = components[0];
       let _key = components[1];
       if (this.message.hasOwnProperty(namespace) && this.message[namespace][_key]) return this.message[namespace][_key];
-      return null;
+      return key;
     } catch(e) {
-      return null;
+      return key;
     }
   }
 

@@ -1,6 +1,5 @@
 let input = 'src/I18nwc.js';
-let plugins = [
-];
+let plugins = [];
 let globals = [];
 
 export default [
@@ -9,6 +8,7 @@ export default [
     plugins,
     globals,
     output: {
+      exports: "auto",
       file: 'dist/I18nwc.iife.js',
       format: 'iife',
       name: 'I18nwc'
@@ -19,6 +19,7 @@ export default [
     plugins,
     globals,
     output: {
+      exports: "auto",
       file: 'index.js',
       format: 'cjs'
     }
@@ -28,6 +29,7 @@ export default [
     plugins,
     globals,
     output: {
+      exports: "auto",
       file: 'dist/I18nwc.es.js',
       format: 'es'
     }
